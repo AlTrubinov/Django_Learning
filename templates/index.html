@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form action="{% url 'thanks_page' %}" method="POST">
-    {% csrf_token %}
-    <label>Name</label>
-    <input name="name">
-    <label>Phone</label>
-    <input name="phone">
-    <button type="submit">Submit</button>
-</form>
+{% load static %}
 
-<br>
+{% block content %}
 
-{% if object_list %}
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Date time</th>
-        <th>Name</th>
-        <th>Phone number</th>
-    </tr>
-    {% for obj in object_list %}
-    <tr>
-        <th>{{obj.id}}</th>
-        <th>{{obj.order_dt}}</th>
-        <th>{{obj.order_name}}</th>
-        <th>{{obj.order_phone}}</th>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-No data
-{% endif %}
+<h2>Данные из индекса</h2>
 
+<img src="{% static 'img\1.jpg' %}" height="400">
 
-</body>
-</html>
+{% include 'index_old.html' %}
+
+{% endblock %}
