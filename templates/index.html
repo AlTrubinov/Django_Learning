@@ -6,6 +6,17 @@
 </head>
 <body>
 
+<form action="{% url 'thanks_page' %}" method="POST">
+    {% csrf_token %}
+    <label>Name</label>
+    <input name="name">
+    <label>Phone</label>
+    <input name="phone">
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+
 {% if object_list %}
 <table border="1">
     <tr>
@@ -14,14 +25,14 @@
         <th>Name</th>
         <th>Phone number</th>
     </tr>
-{% for obj in object_list %}
+    {% for obj in object_list %}
     <tr>
         <th>{{obj.id}}</th>
         <th>{{obj.order_dt}}</th>
         <th>{{obj.order_name}}</th>
         <th>{{obj.order_phone}}</th>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
 {% else %}
 No data
